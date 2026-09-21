@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -28,10 +29,14 @@ public class CheckoutInfoPage {
 
     // Fills the required checkout fields and proceeds to the order overview
     public void fillInfoAndContinue(String firstName, String lastName, String zip) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(firstNameField)).sendKeys(firstName);
+    	wait.until(ExpectedConditions.visibilityOfElementLocated(firstNameField)).sendKeys(firstName);
         driver.findElement(lastNameField).sendKeys(lastName);
         driver.findElement(zipCodeField).sendKeys(zip);
-        wait.until(ExpectedConditions.elementToBeClickable(continueButton)).click();
+
+        WebElement continueBtn = wait.until(ExpectedConditions.elementToBeClickable(continueButton));
+        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", continueBtn);
+        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", continueBtn);
+
         wait.until(ExpectedConditions.urlContains("checkout-step-two"));
     }
 }

@@ -1,16 +1,14 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-/**
- * Page Object for the Cart page — the step between the product
- * listing and the checkout flow.
- */
 public class CartPage {
 
     private final WebDriver driver;
@@ -24,13 +22,14 @@ public class CartPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    // Confirms the correct item made it into the cart before checkout
     public String getFirstItemName() {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(cartItemName)).getText();
     }
 
     public void goToCheckout() {
-    	wait.until(ExpectedConditions.elementToBeClickable(checkoutButton)).click();
-    	 wait.until(ExpectedConditions.urlContains("checkout-step-one"));
+        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(checkoutButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", button);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", button);
+        wait.until(ExpectedConditions.urlContains("checkout-step-one"));
     }
 }
