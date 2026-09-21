@@ -60,7 +60,7 @@ public class InventoryPage {
         }
     }
     public void goToCart() {
-        driver.findElement(cartIcon).click();
+    	wait.until(ExpectedConditions.elementToBeClickable(cartIcon)).click();
     }
 
     // Applies a sort option using the dropdown's visible text, e.g. "Price (low to high)"

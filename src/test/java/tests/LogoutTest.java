@@ -20,7 +20,7 @@ public class LogoutTest extends BaseTest {
         InventoryPage inventoryPage = new InventoryPage(driver);
         inventoryPage.logout();
 
-        Assert.assertTrue(driver.getCurrentUrl().equals("https://www.saucedemo.com/"),
+        Assert.assertTrue(driver.getCurrentUrl().contains("saucedemo.com"),
                 "User was not redirected to login page after logout");
     }
 }

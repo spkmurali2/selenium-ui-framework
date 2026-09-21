@@ -30,6 +30,6 @@ public class CartPage {
     }
 
     public void goToCheckout() {
-        driver.findElement(checkoutButton).click();
+    	wait.until(ExpectedConditions.elementToBeClickable(checkoutButton)).click();
     }
 }
