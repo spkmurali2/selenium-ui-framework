@@ -31,6 +31,6 @@ public class CheckoutInfoPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(firstNameField)).sendKeys(firstName);
         driver.findElement(lastNameField).sendKeys(lastName);
         driver.findElement(zipCodeField).sendKeys(zip);
-        driver.findElement(continueButton).click();
+        wait.until(ExpectedConditions.elementToBeClickable(continueButton)).click();
     }
 }
