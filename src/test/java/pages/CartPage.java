@@ -31,5 +31,6 @@ public class CartPage {
 
     public void goToCheckout() {
     	wait.until(ExpectedConditions.elementToBeClickable(checkoutButton)).click();
+    	 wait.until(ExpectedConditions.urlContains("checkout-step-one"));
     }
 }

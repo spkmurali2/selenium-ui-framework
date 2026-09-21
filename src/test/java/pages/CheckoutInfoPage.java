@@ -32,5 +32,6 @@ public class CheckoutInfoPage {
         driver.findElement(lastNameField).sendKeys(lastName);
         driver.findElement(zipCodeField).sendKeys(zip);
         wait.until(ExpectedConditions.elementToBeClickable(continueButton)).click();
+        wait.until(ExpectedConditions.urlContains("checkout-step-two"));
     }
 }
