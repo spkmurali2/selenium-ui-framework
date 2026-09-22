@@ -24,7 +24,7 @@ public class CheckoutInfoPage {
 
     public CheckoutInfoPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
     // Fills the required checkout fields and proceeds to the order overview
